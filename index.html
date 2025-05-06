@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NLP-Based Resume Analyzer & Job Recommendation System</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <div class="presentation-container">
+    <!-- Slide 1: Title -->
+    <section class="slide" id="slide1">
+      <div class="content">
+        <h1 class="title">NLP-Based Resume Analyzer & Job Recommendation System</h1>
+        <div class="orbiting-container">
+          <div class="center-icon">
+            <i class="fas fa-brain"></i>
+          </div>
+          <div class="orbit-word" style="--delay: 0s; --angle: 0deg;">NLP</div>
+          <div class="orbit-word" style="--delay: 2s; --angle: 72deg;">BERT</div>
+          <div class="orbit-word" style="--delay: 4s; --angle: 144deg;">Spacy</div>
+          <div class="orbit-word" style="--delay: 6s; --angle: 216deg;">Job Matching</div>
+          <div class="orbit-word" style="--delay: 8s; --angle: 288deg;">Resume Analysis</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 2: Project Overview -->
+    <section class="slide" id="slide2">
+      <div class="content">
+        <h2>1. Project Overview</h2>
+        <div class="process-flow">
+          <div class="process-step">
+            <div class="step-icon"><i class="fas fa-file-alt"></i></div>
+            <div class="step-text">Resume In</div>
+          </div>
+          <div class="process-arrow">→</div>
+          <div class="process-step">
+            <div class="step-icon"><i class="fas fa-filter"></i></div>
+            <div class="step-text">Extract</div>
+          </div>
+          <div class="process-arrow">→</div>
+          <div class="process-step">
+            <div class="step-icon"><i class="fas fa-brain"></i></div>
+            <div class="step-text">Understand</div>
+          </div>
+          <div class="process-arrow">→</div>
+          <div class="process-step">
+            <div class="step-icon"><i class="fas fa-puzzle-piece"></i></div>
+            <div class="step-text">Match</div>
+          </div>
+          <div class="process-arrow">→</div>
+          <div class="process-step">
+            <div class="step-icon"><i class="fas fa-percentage"></i></div>
+            <div class="step-text">Matching Score</div>
+          </div>
+        </div>
+        <div class="nlp-visual">
+          <div class="resume-doc">
+            <div class="doc-line"></div>
+            <div class="doc-line"></div>
+            <div class="doc-line"></div>
+            <div class="doc-line"></div>
+          </div>
+          <div class="transformer">
+            <div class="transformer-box">NLP</div>
+          </div>
+          <div class="output-vectors">
+            <div class="vector-line"></div>
+            <div class="vector-line"></div>
+            <div class="vector-line"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 3: Key NLP Terms -->
+    <section class="slide" id="slide3">
+      <div class="content">
+        <h2>2. Key NLP Terms Used</h2>
+        <div class="terms-grid">
+          <div class="term-card">
+            <h3>NER</h3>
+            <p>Named Entity Recognition - identifies entities like names, locations in text</p>
+          </div>
+          <div class="term-card">
+            <h3>Fine-Tuning</h3>
+            <p>Adapting pre-trained models to specific tasks with domain data</p>
+          </div>
+          <div class="term-card">
+            <h3>Transformers</h3>
+            <p>Neural network architecture using attention mechanisms</p>
+          </div>
+          <div class="term-card">
+            <h3>Attention Mechanism</h3>
+            <p>Weighs importance of different words in context</p>
+          </div>
+          <div class="term-card">
+            <h3>NLTK</h3>
+            <p>Natural Language Toolkit for text processing</p>
+          </div>
+          <div class="term-card">
+            <h3>Stemming</h3>
+            <p>Reducing words to their root form</p>
+          </div>
+          <div class="term-card">
+            <h3>Lemmatization</h3>
+            <p>Converting words to their dictionary form</p>
+          </div>
+          <div class="term-card">
+            <h3>BERT</h3>
+            <p>Bidirectional Encoder Representations from Transformers</p>
+          </div>
+          <div class="term-card">
+            <h3>Cosine Similarity</h3>
+            <p>Measures similarity between vectors</p>
+          </div>
+          <div class="term-card">
+            <h3>TF-IDF</h3>
+            <p>Term Frequency-Inverse Document Frequency weighting</p>
+          </div>
+          <div class="term-card">
+            <h3>Sentence Transformers</h3>
+            <p>Models that convert sentences to vectors</p>
+          </div>
+          <div class="term-card metrics-card">
+            <h3>Metrics</h3>
+            <div class="metrics-container">
+              <div class="metric">
+                <span>Precision</span>
+                <div class="metric-bar" data-value="0.85"></div>
+              </div>
+              <div class="metric">
+                <span>Recall</span>
+                <div class="metric-bar" data-value="0.78"></div>
+              </div>
+              <div class="metric">
+                <span>F1</span>
+                <div class="metric-bar" data-value="0.81"></div>
+              </div>
+              <div class="metric">
+                <span>Accuracy</span>
+                <div class="metric-bar" data-value="0.89"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 4: NER Model -->
+    <section class="slide" id="slide4">
+      <div class="content">
+        <h2>3. NER Model with spaCy 'en_core_web_trf'</h2>
+        <div class="ner-demo">
+          <div class="resume-container">
+            <div class="resume-text">
+              <p><span class="ner-name">John Smith</span></p>
+              <p><span class="ner-email">john.smith@example.com</span> | <span class="ner-phone">(555) 123-4567</span></p>
+              <p><span class="ner-address">123 Main St, New York, NY 10001</span></p>
+              <p>Experienced <span class="ner-skill">Data Scientist</span> with expertise in <span class="ner-skill">Python</span>, <span class="ner-skill">Machine Learning</span>, and <span class="ner-skill">NLP</span>.</p>
+              <p>Proficient in <span class="ner-skill">TensorFlow</span>, <span class="ner-skill">PyTorch</span>, and <span class="ner-skill">scikit-learn</span>.</p>
+            </div>
+          </div>
+          <div class="ner-panel">
+            <div class="ner-left">
+              <div class="ner-tag" data-type="name">NAME</div>
+              <div class="ner-tag" data-type="email">EMAIL</div>
+              <div class="ner-tag" data-type="phone">PHONE</div>
+              <div class="ner-tag" data-type="address">ADDRESS</div>
+              <!-- <div class="ner-tag" data-type="skill">SKILL</div> -->
+            </div>
+            <div class="ner-right">
+              <div class="ner-animation">
+                <div class="ner-token">John Smith</div>
+                <div class="ner-token">john.smith@example.com</div>
+                <div class="ner-token">(555) 123-4567</div>
+                <div class="ner-token">123 Main St, New York, NY 10001</div>
+                <div class="ner-token">Data Scientist</div>
+                <div class="ner-token">Python</div>
+                <div class="ner-token">Machine Learning</div>
+                <div class="ner-token">NLP</div>
+                <div class="ner-token">TensorFlow</div>
+                <div class="ner-token">PyTorch</div>
+                <div class="ner-token">scikit-learn</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="entity-transition">
+          <div class="entity-container">
+            <div class="entity-chip" data-type="name">John Smith</div>
+            <div class="entity-chip" data-type="skill">Python</div>
+            <div class="entity-chip" data-type="skill">Machine Learning</div>
+            <div class="entity-chip" data-type="email">john.smith@example.com</div>
+            <div class="entity-chip" data-type="phone">(555) 123-4567</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 5: Job Role Classification -->
+    <section class="slide" id="slide5">
+      <div class="content">
+        <h2>4. Job Role Classification – Finetuned BERT Classifier</h2>
+        <div class="bert-container">
+          <div class="bert-architecture">
+            <div class="bert-input">
+              <div class="token">Resume</div>
+              <div class="token">Text</div>
+              <div class="token">Input</div>
+            </div>
+            <div class="bert-layers">
+              <div class="layer">Tokenization</div>
+              <div class="layer">Embedding</div>
+              <div class="layer">Transformer Layers</div>
+              <div class="layer">Classification Head</div>
+            </div>
+            <div class="bert-output">
+              <div class="classification" data-score="0.85">Data Scientist</div>
+              <div class="classification" data-score="0.12">ML Engineer</div>
+              <div class="classification" data-score="0.03">Data Analyst</div>
+            </div>
+          </div>
+          <div class="classification-demo">
+            <div class="resume-example">
+              <div class="resume-title">Resume 1</div>
+              <div class="resume-content">
+                <p>5 years experience in Python, TensorFlow, data analysis...</p>
+              </div>
+              <div class="classification-result">Data Scientist</div>
+            </div>
+            <div class="resume-example">
+              <div class="resume-title">Resume 2</div>
+              <div class="resume-content">
+                <p>React, JavaScript, CSS, UI/UX design experience...</p>
+              </div>
+              <div class="classification-result">Frontend Developer</div>
+            </div>
+            <div class="resume-example">
+              <div class="resume-title">Resume 3</div>
+              <div class="resume-content">
+                <p>Circuit design, PCB layout, embedded systems...</p>
+              </div>
+              <div class="classification-result">Electrical Engineer</div>
+            </div>
+          </div>
+          <div class="metrics-visualization">
+            <div class="metrics-chart">
+              <div class="chart-bar" data-label="Precision" data-value="0.92"></div>
+              <div class="chart-bar" data-label="Recall" data-value="0.89"></div>
+              <div class="chart-bar" data-label="F1" data-value="0.90"></div>
+              <div class="chart-bar" data-label="Accuracy" data-value="0.94"></div>
+            </div>
+            <div class="confusion-matrix">
+              <div class="matrix-cell" data-row="0" data-col="0">45</div>
+              <div class="matrix-cell" data-row="0" data-col="1">2</div>
+              <div class="matrix-cell" data-row="0" data-col="2">1</div>
+              <div class="matrix-cell" data-row="1" data-col="0">3</div>
+              <div class="matrix-cell" data-row="1" data-col="1">40</div>
+              <div class="matrix-cell" data-row="1" data-col="2">2</div>
+              <div class="matrix-cell" data-row="2" data-col="0">1</div>
+              <div class="matrix-cell" data-row="2" data-col="1">3</div>
+              <div class="matrix-cell" data-row="2" data-col="2">38</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 6: Resume & JD Matching -->
+    <section class="slide" id="slide6">
+      <div class="content">
+        <h2>5. Resume & JD Matching via Cosine Similarity</h2>
+        <div class="matching-container">
+          <div class="documents">
+            <div class="document resume">
+              <h3>Resume</h3>
+              <div class="doc-content">
+                <p>Experienced <span class="highlight">Data Scientist</span> with 5 years in <span class="highlight">machine learning</span> and <span class="highlight">Python</span>.</p>
+                <p>Proficient in <span class="highlight">TensorFlow</span>, <span class="highlight">PyTorch</span>, and <span class="highlight">SQL</span>.</p>
+                <p>Experience with <span class="highlight">NLP</span> and <span class="highlight">computer vision</span> projects.</p>
+              </div>
+            </div>
+            <div class="document job-description">
+              <h3>Job Description</h3>
+              <div class="doc-content">
+                <p>Seeking a <span class="highlight">Data Scientist</span> with strong <span class="highlight">Python</span> skills.</p>
+                <p>Experience with <span class="highlight">machine learning</span> frameworks like <span class="highlight">TensorFlow</span>.</p>
+                <p><span class="highlight">NLP</span> experience is a plus.</p>
+              </div>
+            </div>
+          </div>
+          <div class="vectorization">
+            <div class="vector-space">
+              <div class="vector v1" data-label="Resume"></div>
+              <div class="vector v2" data-label="Job"></div>
+              <div class="cosine-angle"></div>
+            </div>
+            <div class="similarity-score">
+              <div class="score-label">Similarity Score:</div>
+              <div class="score-value" id="similarity-counter">0%</div>
+            </div>
+          </div>
+          <div class="tfidf-animation">
+            <h3>TF-IDF Transformation</h3>
+            <div class="tfidf-process">
+              <div class="tfidf-step">
+                <div class="step-title">Raw Frequencies</div>
+                <div class="word-freq">
+                  <div class="word-item">
+                    <span>Data</span>
+                    <div class="freq-bar" data-freq="2"></div>
+                  </div>
+                  <div class="word-item">
+                    <span>Python</span>
+                    <div class="freq-bar" data-freq="1"></div>
+                  </div>
+                  <div class="word-item">
+                    <span>ML</span>
+                    <div class="freq-bar" data-freq="1"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="tfidf-arrow">→</div>
+              <div class="tfidf-step">
+                <div class="step-title">TF-IDF Weights</div>
+                <div class="word-freq">
+                  <div class="word-item">
+                    <span>Data</span>
+                    <div class="freq-bar tfidf" data-freq="0.4"></div>
+                  </div>
+                  <div class="word-item">
+                    <span>Python</span>
+                    <div class="freq-bar tfidf" data-freq="0.8"></div>
+                  </div>
+                  <div class="word-item">
+                    <span>ML</span>
+                    <div class="freq-bar tfidf" data-freq="0.7"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 7: Skills Extraction -->
+    <section class="slide" id="slide7">
+      <div class="content">
+        <h2>6. Skills Extraction – DistilBERT Model</h2>
+        <div class="skills-extraction">
+          <div class="raw-text">
+            <h3>Resume Text</h3>
+            <div class="text-content">
+              <p>I have 5 years of experience working with <span class="skill-highlight">data analysis</span> tools including <span class="skill-highlight">Python</span>, <span class="skill-highlight">R</span>, and <span class="skill-highlight">SQL</span>.</p>
+              <p>Implemented <span class="skill-highlight">machine learning</span> models using <span class="skill-highlight">TensorFlow</span> and <span class="skill-highlight">scikit-learn</span>.</p>
+              <p>Deployed applications using <span class="skill-highlight">Docker</span> and <span class="skill-highlight">Kubernetes</span> on <span class="skill-highlight">AWS</span>.</p>
+              <p>Developed front-end interfaces with <span class="skill-highlight">React</span> and <span class="skill-highlight">JavaScript</span>.</p>
+            </div>
+          </div>
+          <div class="extracted-skills">
+            <h3>Extracted Skills</h3>
+            <div class="skills-container">
+              <div class="skill-chip">Data Analysis</div>
+              <div class="skill-chip">Python</div>
+              <div class="skill-chip">R</div>
+              <div class="skill-chip">SQL</div>
+              <div class="skill-chip">Machine Learning</div>
+              <div class="skill-chip">TensorFlow</div>
+              <div class="skill-chip">scikit-learn</div>
+              <div class="skill-chip">Docker</div>
+              <div class="skill-chip">Kubernetes</div>
+              <div class="skill-chip">AWS</div>
+              <div class="skill-chip">React</div>
+              <div class="skill-chip">JavaScript</div>
+            </div>
+          </div>
+          <div class="distilbert-visual">
+            <h3>DistilBERT Model</h3>
+            <div class="model-layers">
+              <div class="layer">Input Embedding</div>
+              <div class="layer">Transformer Layer 1</div>
+              <div class="layer">Transformer Layer 2</div>
+              <div class="layer">Transformer Layer 3</div>
+              <div class="layer">Output Layer</div>
+            </div>
+          </div>
+          <div class="accuracy-metrics">
+            <h3>Model Evaluation</h3>
+            <div class="metrics-bars">
+              <div class="metric-item">
+                <span>Precision</span>
+                <div class="metric-bar" data-value="0.91"></div>
+                <span class="value">91%</span>
+              </div>
+              <div class="metric-item">
+                <span>Recall</span>
+                <div class="metric-bar" data-value="0.87"></div>
+                <span class="value">87%</span>
+              </div>
+              <div class="metric-item">
+                <span>F1 Score</span>
+                <div class="metric-bar" data-value="0.89"></div>
+                <span class="value">89%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 8: Pipeline Flow Summary -->
+    <section class="slide" id="slide8">
+      <div class="content">
+        <h2>7. Pipeline Flow Summary</h2>
+        <div class="pipeline-flow">
+          <div class="flow-step" id="flow-resume">
+            <div class="step-icon"><i class="fas fa-file-alt"></i></div>
+            <div class="step-label">Resume</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step" id="flow-ner">
+            <div class="step-icon"><i class="fas fa-tag"></i></div>
+            <div class="step-label">NER</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step" id="flow-bert">
+            <div class="step-icon"><i class="fas fa-brain"></i></div>
+            <div class="step-label">BERT Classifier</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step" id="flow-skills">
+            <div class="step-icon"><i class="fas fa-list-check"></i></div>
+            <div class="step-label">Skills Extractor</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step" id="flow-matching">
+            <div class="step-icon"><i class="fas fa-handshake"></i></div>
+            <div class="step-label">JD Matching</div>
+          </div>
+        </div>
+        <div class="final-cta">
+          <h2>Smart Hiring Powered by NLP</h2>
+          <button class="demo-button">Proceed to Live Demo</button>
+          <div class="questions-section">
+            <h3>Any Questions?</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation Controls -->
+    <div class="nav-controls">
+      <button id="prev-btn" class="nav-btn"><i class="fas fa-chevron-left"></i></button>
+      <div class="slide-indicators"></div>
+      <button id="next-btn" class="nav-btn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
