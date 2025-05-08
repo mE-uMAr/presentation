@@ -187,6 +187,16 @@
               <p>Weighs importance of different words in context</p>
             </div>
             <div class="term-card" data-category="tool">
+              <div class="term-icon"><i class="fas fa-language"></i></div>
+              <h3>Tokenization</h3>
+              <p>A single unit (word, punctuation, etc.) in text.</p>
+            </div>
+            <div class="term-card" data-category="tool">
+              <div class="term-icon"><i class="fas fa-line-columns"></i></div>
+              <h3>N-Grams</h3>
+              <p>Sequences of n words (e.g., bigram, trigram).</p>
+            </div>
+            <div class="term-card" data-category="tool">
               <div class="term-icon"><i class="fas fa-tools"></i></div>
               <h3>NLTK</h3>
               <p>Natural Language Toolkit for text processing</p>
@@ -215,11 +225,6 @@
               <div class="term-icon"><i class="fas fa-sort-amount-up"></i></div>
               <h3>TF-IDF</h3>
               <p>Term Frequency-Inverse Document Frequency weighting</p>
-            </div>
-            <div class="term-card" data-category="model">
-              <div class="term-icon"><i class="fas fa-language"></i></div>
-              <h3>Sentence Transformers</h3>
-              <p>Models that convert sentences to vectors</p>
             </div>
           </div>
           
@@ -300,13 +305,11 @@
           
           <div class="entity-transition">
             <div class="entity-header">
-              <h3>Structured Entity Output</h3>
+              <h3 style="color:white;">Structured Entity Output</h3>
               <p>Entities are extracted, categorized, and stored for further processing</p>
             </div>
             <div class="entity-container">
               <div class="entity-chip" data-type="name">John Smith</div>
-              <div class="entity-chip" data-type="skill">Python</div>
-              <div class="entity-chip" data-type="skill">Machine Learning</div>
               <div class="entity-chip" data-type="email">john.smith@example.com</div>
               <div class="entity-chip" data-type="phone">(555) 123-4567</div>
             </div>
@@ -372,7 +375,7 @@
                     <div class="resume-example">
                       <div class="resume-title">Resume 1</div>
                       <div class="resume-content">
-                        <p>5 years experience in Python, TensorFlow, data analysis...</p>
+                        <p style="color:black;">5 years experience in Python, TensorFlow, data analysis...</p>
                       </div>
                       <div class="classification-result">
                         <i class="fas fa-user-tag"></i>
@@ -382,7 +385,7 @@
                     <div class="resume-example">
                       <div class="resume-title">Resume 2</div>
                       <div class="resume-content">
-                        <p>React, JavaScript, CSS, UI/UX design experience...</p>
+                        <p style="color:black;">React, JavaScript, CSS, UI/UX design experience...</p>
                       </div>
                       <div class="classification-result">
                         <i class="fas fa-user-tag"></i>
@@ -392,7 +395,7 @@
                     <div class="resume-example">
                       <div class="resume-title">Resume 3</div>
                       <div class="resume-content">
-                        <p>Circuit design, PCB layout, embedded systems...</p>
+                        <p style="color:black;">Circuit design, PCB layout, embedded systems...</p>
                       </div>
                       <div class="classification-result">
                         <i class="fas fa-user-tag"></i>
@@ -449,7 +452,7 @@
                   <div class="chart-header">
                     <h4>Model Training view</h4>
                   </div>
-                  <div><img style="width: auto; height: 27vw;" src="classifier.png" alt=""></div>
+                  <div><img style="width: auto; height: 20vw;" src="classifier.png" alt=""></div>
                 </div>
               </div>
             </div>
@@ -507,8 +510,7 @@
               <div class="vector-formula">
                 <span class="formula">similarity = cos(θ) = </span>
                 <span class="fraction">
-                  <span class="numerator">Result value</span>
-                  <span class="denominator">e.g 0.86</span>
+                  <span class="numerator">Similarity score</span>
                 </span>
               </div>
             </div>
